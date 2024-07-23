@@ -1,0 +1,13 @@
+.side{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.sign{
+  display: flex;
+  margin:   10%;
+
+  
+}
