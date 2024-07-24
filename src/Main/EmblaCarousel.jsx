@@ -12,9 +12,9 @@ const EmblaCarousel = (props) => {
 
   const { options } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
-    AutoScroll({ playOnInit: false }),
+    AutoScroll({ playOnInit: true }),
   ]);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   const {
     prevBtnDisabled,
@@ -29,7 +29,7 @@ const EmblaCarousel = (props) => {
       if (!autoScroll) return;
 
       const resetOrStop =
-        autoScroll.options.stopOnInteraction === false
+        autoScroll.options.stopOnInteraction === true
           ? autoScroll.reset
           : autoScroll.stop;
 
@@ -44,7 +44,7 @@ const EmblaCarousel = (props) => {
     if (!autoScroll) return;
 
     const playOrStop = autoScroll.isPlaying()
-      ? autoScroll.stop
+      ? autoScroll.play
       : autoScroll.play;
     playOrStop();
   }, [emblaApi]);
@@ -56,7 +56,7 @@ const EmblaCarousel = (props) => {
     setIsPlaying(autoScroll.isPlaying());
     emblaApi
       .on("autoScroll:play", () => setIsPlaying(true))
-      .on("autoScroll:stop", () => setIsPlaying(false))
+      .on("autoScroll:stop", () => setIsPlaying(true))
       .on("reInit", () => setIsPlaying(autoScroll.isPlaying()));
   }, [emblaApi]);
 
@@ -86,9 +86,11 @@ const EmblaCarousel = (props) => {
           />
         </div>
 
-        <button className="embla__play" onClick={toggleAutoplay} type="button">
-          {isPlaying ? "Stop" : "Start"}
-        </button>
+        <button
+          className="embla__play"
+          onClick={toggleAutoplay}
+          type="button"
+        ></button>
       </div>
     </div>
   );

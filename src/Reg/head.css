@@ -1,5 +1,7 @@
 .header {
-  margin-top: -8px;
+  position: fixed;
+  top: 0; /* Ensure the header is at the top of the page */
+  z-index: 1000; /* Ensure the header stays on top of other content */
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   width: 100%;
   display: flex;
@@ -7,6 +9,10 @@
   height: 70px;
   align-items: center;
   background-color: #fff;
+}
+
+body {
+  margin-top: 70px; /* Add a top margin equal to the height of the fixed header */
 }
 
 .left {
@@ -47,7 +53,6 @@ h5 {
 .mid a {
   text-decoration: none;
   line-height: 25px;
-  /* font-weight: 600; */
 }
 
 .ic {
@@ -78,9 +83,6 @@ h5 {
 }
 
 /* Media Queries */
-
-
-
 @media (max-width: 768px) {
   .mid {
     width: 35%;
@@ -89,16 +91,16 @@ h5 {
     align-items: center;
     justify-content: space-around;
   }
+
   .boox a {
     color: black;
-    /* font-size: 7px; */
   }
-  .boox{
 
+  .boox {
     font-size: 7px;
   }
-  .ic{
+
+  .ic {
     display: none;
   }
- 
 }
